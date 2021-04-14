@@ -6,7 +6,7 @@ import ContributorsView from './views/ContributorsView.js';
 import SelectController from './controllers/SelectController.js';
 import getDOM from './utils/getDOM.js';
 
-function main() {
+async function main() {
   const dom = getDOM();
 
   const model = Model();
@@ -17,6 +17,9 @@ function main() {
   model.subscribe(ContributorsView(dom));
 
   SelectController(dom, fetcher);
+
+  await fetcher.fetchRepos();
+  await fetcher.fetchContributors(0);
 }
 
 window.addEventListener('load', main);

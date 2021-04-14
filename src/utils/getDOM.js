@@ -1,8 +1,8 @@
-const camelize = name => name.replace(/-./g, x => x.toUpperCase()[1]);
+const camelize = (name) => name.replace(/-./g, (x) => x.toUpperCase()[1]);
 
 function getDOM() {
   const dom = {};
-  document.querySelectorAll('*[id]').forEach(elem => {
+  document.querySelectorAll('*[id]').forEach((elem) => {
     dom[camelize(elem.id)] = elem;
   });
   return dom;

@@ -5,7 +5,7 @@ function Observable() {
       observers.push(observer);
     },
     notify(data) {
-      observers.forEach(observer => observer(data));
+      observers.forEach((observer) => observer(data));
     },
   };
 }

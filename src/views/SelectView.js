@@ -11,7 +11,7 @@ function SelectView(dom) {
         createAndAppend('option', dom.repoSelect, {
           text: repo.name,
           value: index,
-        }),
+        })
       );
   };
 }

@@ -10,12 +10,13 @@ function Fetcher(model) {
       try {
         model.setState({ ...state, loading: true, error: null });
         const repos = await fetchJSON(HYF_REPOS_URL);
+        repos.sort((a, b) => a.name.localeCompare(b.name));
         model.setState({ ...state, repos, loading: false });
       } catch (error) {
         model.setState({ ...state, loading: false, error });
       }
     },
-    fetchContributors: async selectedIndex => {
+    fetchContributors: async (selectedIndex) => {
       const state = model.getState();
       try {
         model.setState({ ...state, loading: true, error: null });

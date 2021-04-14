@@ -8,7 +8,7 @@ function ContributionsView(dom) {
 
     const container = dom.contributorList;
     container.innerHTML = '';
-    contributors.forEach(contributor => {
+    contributors.forEach((contributor) => {
       const li = createAndAppend('li', container);
       const a = createAndAppend('a', li, {
         href: contributor.html_url,
