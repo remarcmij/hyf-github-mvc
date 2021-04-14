@@ -1,13 +1,7 @@
 import Observable from '../utils/Observable.js';
 
-function Model() {
-  let state = {
-    repos: null,
-    contributors: null,
-    selectedIndex: 0,
-    loading: false,
-    error: null,
-  };
+function Model(initialState) {
+  let state = { ...initialState };
 
   const observable = Observable();
 
