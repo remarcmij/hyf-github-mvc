@@ -1,6 +1,6 @@
-function SelectController(dom, fetcher) {
+function SelectController(dom, model) {
   dom.repoSelect.addEventListener('change', (event) => {
-    fetcher.fetchContributors(event.target.value);
+    model.fetchContributors(event.target.value);
   });
 }
 export default SelectController;
