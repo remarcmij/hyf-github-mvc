@@ -1,6 +1,5 @@
-function createAndAppend(name, parent, options = {}) {
+function createElement(name, options = {}) {
   const elem = document.createElement(name);
-  parent.appendChild(elem);
   Object.entries(options).forEach(([keyCode, value]) => {
     if (keyCode === 'text') {
       elem.textContent = value;
@@ -11,4 +10,4 @@ function createAndAppend(name, parent, options = {}) {
   return elem;
 }
 
-export default createAndAppend;
+export default createElement;

@@ -1,23 +1,21 @@
-import AppModel from './model/AppModel.js';
-import SelectView from './views/SelectView.js';
-import RepoView from './views/RepoView.js';
-import ContributorsView from './views/ContributorsView.js';
-import SelectController from './controllers/SelectController.js';
-import getDOM from './lib/getDOM.js';
+import {
+  subscribeToModel,
+  fetchRepos,
+  fetchContributors,
+} from './model/model.js';
+import { selectView } from './views/selectView.js';
+import { repoView } from './views/repoView.js';
+import { contributorsView } from './views/contributorsView.js';
+import { loggerView } from './views/loggerView.js';
 
 async function main() {
-  const dom = getDOM();
+  subscribeToModel(selectView);
+  subscribeToModel(repoView);
+  subscribeToModel(contributorsView);
+  subscribeToModel(loggerView);
 
-  const model = AppModel();
-
-  model.subscribe(SelectView(dom));
-  model.subscribe(RepoView(dom));
-  model.subscribe(ContributorsView(dom));
-
-  SelectController(dom, model);
-
-  await model.fetchRepos();
-  await model.fetchContributors(0);
+  await fetchRepos();
+  await fetchContributors(0);
 }
 
 window.addEventListener('load', main);
