@@ -1,4 +1,4 @@
-import createAndAppend from '../utils/createAndAppend.js';
+import createAndAppend from '../lib/createAndAppend.js';
 
 function SelectView(dom) {
   return ({ repos }) => {
@@ -6,13 +6,18 @@ function SelectView(dom) {
       return;
     }
 
-    repos &&
-      repos.forEach((repo, index) =>
-        createAndAppend('option', dom.repoSelect, {
-          text: repo.name,
-          value: index,
-        })
-      );
+    if (!repos) {
+      return;
+    }
+
+    repos.forEach((repo, index) =>
+      createAndAppend('option', dom.repoSelect, {
+        text: repo.name,
+        value: index,
+      })
+    );
+
+    dom.repoSelect.removeAttribute('hidden');
   };
 }
 

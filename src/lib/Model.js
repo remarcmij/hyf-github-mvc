@@ -1,4 +1,4 @@
-import Observable from '../utils/Observable.js';
+import Observable from './Observable.js';
 
 function Model(initialState) {
   let state = { ...initialState };

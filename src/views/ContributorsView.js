@@ -1,4 +1,4 @@
-import createAndAppend from '../utils/createAndAppend.js';
+import createAndAppend from '../lib/createAndAppend.js';
 
 function ContributionsView(dom) {
   return ({ contributors }) => {

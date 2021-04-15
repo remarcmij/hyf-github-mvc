@@ -1,33 +1,23 @@
-import Model from './model/Model.js';
-import Fetcher from './model/Fetcher.js';
+import AppModel from './model/AppModel.js';
 import SelectView from './views/SelectView.js';
 import RepoView from './views/RepoView.js';
 import ContributorsView from './views/ContributorsView.js';
 import SelectController from './controllers/SelectController.js';
-import getDOM from './utils/getDOM.js';
-
-const initialState = {
-  repos: null,
-  contributors: null,
-  selectedIndex: 0,
-  loading: false,
-  error: null,
-};
+import getDOM from './lib/getDOM.js';
 
 async function main() {
   const dom = getDOM();
 
-  const model = Model(initialState);
-  const fetcher = Fetcher(model);
+  const model = AppModel();
 
   model.subscribe(SelectView(dom));
   model.subscribe(RepoView(dom));
   model.subscribe(ContributorsView(dom));
 
-  SelectController(dom, fetcher);
+  SelectController(dom, model);
 
-  await fetcher.fetchRepos();
-  await fetcher.fetchContributors(0);
+  await model.fetchRepos();
+  await model.fetchContributors(0);
 }
 
 window.addEventListener('load', main);
