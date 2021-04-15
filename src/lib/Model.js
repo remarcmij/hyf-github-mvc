@@ -3,19 +3,16 @@ import Observable from './Observable.js';
 function Model(initialState) {
   let state = { ...initialState };
 
-  const observable = Observable();
+  const { subscribe, notify } = Observable();
 
   return {
-    subscribe(listener) {
-      observable.subscribe(listener);
-    },
+    subscribe,
     getState() {
       return state;
     },
     setState(newState) {
       state = newState;
-      console.log(state);
-      observable.notify(state);
+      notify(state);
     },
   };
 }
