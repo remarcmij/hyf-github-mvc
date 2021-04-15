@@ -3,9 +3,9 @@ import createElement from '../lib/createElement.js';
 const contributorsContainer = document.getElementById('contributor-list');
 
 export function contributorsView(state) {
-  const { contributors } = state;
+  const { contributors, loading, error } = state;
 
-  if (!contributors) {
+  if (!contributors || loading || error) {
     return;
   }
 

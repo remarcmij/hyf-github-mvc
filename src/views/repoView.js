@@ -4,8 +4,8 @@ const repoForks = document.getElementById('repo-forks');
 const repoUpdated = document.getElementById('repo-updated');
 
 export function repoView(state) {
-  const { repos, selectedIndex } = state;
-  if (!repos) {
+  const { repos, loading, error, selectedIndex } = state;
+  if (!repos || loading || error) {
     return;
   }
 
