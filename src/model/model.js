@@ -11,22 +11,22 @@ let state = {
   error: null,
 };
 
-const observers = [];
+const views = [];
 
-export const subscribeToModel = (observer) => {
-  observers.push(observer);
-};
+export function subscribeToModel(view) {
+  views.push(view);
+}
 
-const notify = (data) => {
-  observers.forEach((observer) => observer(data));
-};
+function notifyViews(state) {
+  views.forEach((view) => view(state));
+}
 
-const setState = (newState) => {
+function setState(newState) {
   state = newState;
-  notify(state);
-};
+  notifyViews(state);
+}
 
-export const fetchRepos = async () => {
+export async function fetchRepos() {
   try {
     setState({ ...state, loading: true, error: null });
     const repos = await fetchJSON(HYF_REPOS_URL);
@@ -35,9 +35,9 @@ export const fetchRepos = async () => {
   } catch (error) {
     setState({ ...state, loading: false, error });
   }
-};
+}
 
-export const fetchContributors = async (selectedIndex) => {
+export async function fetchContributors(selectedIndex) {
   try {
     setState({ ...state, loading: true, error: null });
     const url = state.repos[selectedIndex].contributors_url;
@@ -51,4 +51,4 @@ export const fetchContributors = async (selectedIndex) => {
   } catch (error) {
     setState({ ...state, loading: false, error });
   }
-};
+}
