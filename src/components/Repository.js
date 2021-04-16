@@ -8,8 +8,6 @@ function addRow(tbody, label) {
 }
 
 function Repository(parent) {
-  const dom = {};
-
   // Set up fixed parts
   const container = createAndAppend('section', parent, {
     class: 'repo-container whiteframe hide',
@@ -22,10 +20,10 @@ function Repository(parent) {
   const table = createAndAppend('table', cardContainer);
   const tbody = createAndAppend('tbody', table);
 
-  dom.repository = addRow(tbody, 'Repository');
-  dom.description = addRow(tbody, 'Description');
-  dom.forks = addRow(tbody, 'Forks');
-  dom.updated = addRow(tbody, 'Updated');
+  const repositoryElem = addRow(tbody, 'Repository');
+  const descriptionElem = addRow(tbody, 'Description');
+  const forksElem = addRow(tbody, 'Forks');
+  const updatedElem = addRow(tbody, 'Updated');
 
   // Update elements
   subscribeToModel((state) => {
@@ -42,11 +40,11 @@ function Repository(parent) {
     }
 
     const repo = repos[selectedIndex];
-    dom.repository.href = repo.html_url;
-    dom.repository.textContent = repo.name;
-    dom.description.textContent = repo.description;
-    dom.forks.textContent = repo.forks;
-    dom.updated.textContent = new Date(repo.updated_at).toLocaleString();
+    repositoryElem.href = repo.html_url;
+    repositoryElem.textContent = repo.name;
+    descriptionElem.textContent = repo.description;
+    forksElem.textContent = repo.forks;
+    updatedElem.textContent = new Date(repo.updated_at).toLocaleString();
   });
 }
 

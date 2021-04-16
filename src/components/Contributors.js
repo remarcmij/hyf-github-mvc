@@ -3,13 +3,11 @@ import clearElement from '../lib/clearElement.js';
 import { subscribeToModel } from '../model/model.js';
 
 function Contributors(parent) {
-  const dom = {};
-
   const container = createAndAppend('section', parent, {
     class: 'contributors-container whiteframe',
   });
 
-  dom.ul = createAndAppend('ul', container, {
+  const ul = createAndAppend('ul', container, {
     class: 'contributor-list',
   });
 
@@ -26,9 +24,10 @@ function Contributors(parent) {
       return;
     }
 
-    clearElement(dom.ul);
+    clearElement(ul);
+
     contributors.forEach((contributor) => {
-      const li = createAndAppend('li', dom.ul);
+      const li = createAndAppend('li', ul);
       const a = createAndAppend('a', li, {
         href: contributor.html_url,
         class: 'contributor-item',
