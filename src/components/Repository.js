@@ -1,5 +1,5 @@
 import createAndAppend from '../lib/createAndAppend.js';
-import { subscribeToModel } from '../model/model.js';
+import { subscribeToStore } from '../store/store.js';
 
 function addRow(tbody, label) {
   const row = createAndAppend('tr', tbody);
@@ -26,7 +26,7 @@ function Repository(parent) {
   const updatedElem = addRow(tbody, 'Updated');
 
   // Update elements
-  subscribeToModel((state) => {
+  subscribeToStore((state) => {
     const { repos, selectedIndex, error, loading } = state;
 
     if (error) {

@@ -1,5 +1,5 @@
-import { subscribeToModel } from './model/model.js';
-import { fetchRepos, fetchContributors } from './model/fetchers.js';
+import { subscribeToStore } from './store/store.js';
+import { fetchRepos, fetchContributors } from './store/actions.js';
 import Selector from './components/Selector.js';
 import Errors from './components/Errors.js';
 import Repository from './components/Repository.js';
@@ -19,7 +19,7 @@ async function AppComponent() {
   Repository(main);
   Contributors(main);
 
-  subscribeToModel((state) => console.log(state));
+  subscribeToStore((state) => console.log(state));
 
   await fetchRepos();
   await fetchContributors(0);

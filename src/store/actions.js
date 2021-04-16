@@ -1,4 +1,4 @@
-import { getState, setState } from './model.js';
+import { getState, setState } from './store.js';
 import fetchJSON from '../lib/fetchJSON.js';
 
 const HYF_REPOS_URL =

@@ -20,6 +20,6 @@ export function setState(newState) {
   notify(state);
 }
 
-export function subscribeToModel(listener) {
+export function subscribeToStore(listener) {
   listeners.push(listener);
 }

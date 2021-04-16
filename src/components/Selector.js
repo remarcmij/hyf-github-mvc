@@ -1,6 +1,6 @@
 import createAndAppend from '../lib/createAndAppend.js';
-import { subscribeToModel } from '../model/model.js';
-import { fetchContributors } from '../model/fetchers.js';
+import { subscribeToStore } from '../store/store.js';
+import { fetchContributors } from '../store/actions.js';
 
 function Selector(parent) {
   const header = createAndAppend('header', parent, {
@@ -16,7 +16,7 @@ function Selector(parent) {
     fetchContributors(selectElem.value)
   );
 
-  subscribeToModel((state) => {
+  subscribeToStore((state) => {
     const { repos, loading, error } = state;
     if (!repos || loading || error) {
       return;
