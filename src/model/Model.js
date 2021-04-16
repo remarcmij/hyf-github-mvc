@@ -1,21 +1,33 @@
-import Model from '../lib/Model.js';
 import fetchJSON from '../lib/fetchJSON.js';
 
 const HYF_REPOS_URL =
   'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
 
-function AppModel() {
-  const initialState = {
+function Model() {
+  let state = {
     repos: null,
     contributors: null,
     selectedIndex: 0,
     loading: false,
     error: null,
   };
-  const { getState, setState, subscribe } = Model(initialState);
 
-  const fetchRepos = async () => {
-    const state = getState();
+  const listeners = [];
+
+  function subscribe(listener) {
+    listeners.push(listener);
+  }
+
+  function notify(state) {
+    listeners.forEach((listener) => listener(state));
+  }
+
+  function setState(newState) {
+    state = newState;
+    notify(state);
+  }
+
+  async function fetchRepos() {
     try {
       setState({ ...state, loading: true, error: null });
       const repos = await fetchJSON(HYF_REPOS_URL);
@@ -24,10 +36,9 @@ function AppModel() {
     } catch (error) {
       setState({ ...state, loading: false, error });
     }
-  };
+  }
 
-  const fetchContributors = async (selectedIndex) => {
-    const state = getState();
+  async function fetchContributors(selectedIndex) {
     try {
       setState({ ...state, loading: true, error: null });
       const url = state.repos[selectedIndex].contributors_url;
@@ -41,15 +52,13 @@ function AppModel() {
     } catch (error) {
       setState({ ...state, loading: false, error });
     }
-  };
+  }
 
   return {
-    getState,
-    setState,
     subscribe,
     fetchRepos,
     fetchContributors,
   };
 }
 
-export default AppModel;
+export default Model;

@@ -1,15 +1,33 @@
 import createAndAppend from '../lib/createAndAppend.js';
+import clearElement from '../lib/clearElement.js';
 
-function ContributionsView(dom) {
-  return ({ contributors }) => {
-    if (!contributors) {
+function Contributors(model, parent) {
+  const dom = {};
+
+  const container = createAndAppend('section', parent, {
+    class: 'contributors-container whiteframe',
+  });
+
+  dom.ul = createAndAppend('ul', container, {
+    class: 'contributor-list',
+  });
+
+  model.subscribe((state) => {
+    const { contributors, loading, error } = state;
+
+    if (error) {
+      container.classList.add('hide');
+    } else {
+      container.classList.remove('hide');
+    }
+
+    if (!contributors || loading || error) {
       return;
     }
 
-    const container = dom.contributorList;
-    container.innerHTML = '';
+    clearElement(dom.ul);
     contributors.forEach((contributor) => {
-      const li = createAndAppend('li', container);
+      const li = createAndAppend('li', dom.ul);
       const a = createAndAppend('a', li, {
         href: contributor.html_url,
         class: 'contributor-item',
@@ -31,7 +49,7 @@ function ContributionsView(dom) {
         class: 'contributor-badge',
       });
     });
-  };
+  });
 }
 
-export default ContributionsView;
+export default Contributors;

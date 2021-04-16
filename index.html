@@ -1,11 +1,4 @@
 <html lang="en">
-  <script type="text/javascript">
-    window['_gaUserPrefs'] = {
-      ioo: function () {
-        return true;
-      },
-    };
-  </script>
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -16,60 +9,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="apple-touch-icon" href="./hyf.png" />
-    <link rel="shortcut icon" type="image/png" href="./hyf.png" />
     <title>HYF-GITHUB</title>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="./src/main.js" type="module"></script>
+    <script src="./src/App.js" type="module"></script>
   </head>
-  <body data-new-gr-c-s-check-loaded="14.983.0" data-gr-ext-installed="">
-    <div id="root">
-      <header class="header">
-        <div>HackYourFuture</div>
-        <select
-          id="repo-select"
-          class="repo-select"
-          autofocus="autofocus"
-          hidden
-        ></select>
-      </header>
-      <div></div>
-      <main class="main-container">
-        <section class="repo-container whiteframe">
-          <div class="card-container">
-            <table>
-              <tbody>
-                <tr>
-                  <th class="label">Repository:</th>
-                  <td>
-                    <a id="repo-name" href="#" target="_blank"></a>
-                  </td>
-                </tr>
-                <tr>
-                  <th class="label">Description:</th>
-                  <td id="repo-description"></td>
-                </tr>
-                <tr>
-                  <th class="label">Forks:</th>
-                  <td id="repo-forks"></td>
-                </tr>
-                <tr>
-                  <th class="label">Updated:</th>
-                  <td id="repo-updated"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-        <section class="contributors-container whiteframe">
-          <div class="contributor-header">Contributions</div>
-          <ul id="contributor-list" class="contributor-list"></ul>
-        </section>
-      </main>
-    </div>
+  <body>
+    <div id="root"></div>
   </body>
 </html>
