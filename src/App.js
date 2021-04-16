@@ -2,22 +2,14 @@ import { subscribeToStore } from './store/store.js';
 import { fetchRepos, fetchContributors } from './store/actions.js';
 import Selector from './components/Selector.js';
 import Errors from './components/Errors.js';
-import Repository from './components/Repository.js';
-import Contributors from './components/Contributors.js';
-import createAndAppend from './lib/createAndAppend.js';
+import Main from './components/Main.js';
 
 async function AppComponent() {
   const root = document.getElementById('root');
 
   Selector(root);
   Errors(root);
-
-  const main = createAndAppend('main', root, {
-    class: 'main-container',
-  });
-
-  Repository(main);
-  Contributors(main);
+  Main(root);
 
   subscribeToStore((state) => console.log(state));
 
