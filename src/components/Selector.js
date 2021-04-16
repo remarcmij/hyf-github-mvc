@@ -1,6 +1,8 @@
 import createAndAppend from '../lib/createAndAppend.js';
+import { subscribeToModel } from '../model/model.js';
+import { fetchContributors } from '../model/fetchers.js';
 
-function Selector(model, parent) {
+function Selector(parent) {
   const dom = {};
   const header = createAndAppend('header', parent, {
     class: 'header',
@@ -12,10 +14,10 @@ function Selector(model, parent) {
   });
 
   dom.select.addEventListener('change', () =>
-    model.fetchContributors(dom.select.value)
+    fetchContributors(dom.select.value)
   );
 
-  model.subscribe((state) => {
+  subscribeToModel((state) => {
     const { repos, loading, error } = state;
     if (!repos || loading || error) {
       return;

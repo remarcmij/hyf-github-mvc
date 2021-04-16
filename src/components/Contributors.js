@@ -1,7 +1,8 @@
 import createAndAppend from '../lib/createAndAppend.js';
 import clearElement from '../lib/clearElement.js';
+import { subscribeToModel } from '../model/model.js';
 
-function Contributors(model, parent) {
+function Contributors(parent) {
   const dom = {};
 
   const container = createAndAppend('section', parent, {
@@ -12,7 +13,7 @@ function Contributors(model, parent) {
     class: 'contributor-list',
   });
 
-  model.subscribe((state) => {
+  subscribeToModel((state) => {
     const { contributors, loading, error } = state;
 
     if (error) {

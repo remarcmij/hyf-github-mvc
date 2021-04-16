@@ -1,4 +1,5 @@
 import createAndAppend from '../lib/createAndAppend.js';
+import { subscribeToModel } from '../model/model.js';
 
 function addRow(tbody, label) {
   const row = createAndAppend('tr', tbody);
@@ -6,7 +7,7 @@ function addRow(tbody, label) {
   return createAndAppend('td', row);
 }
 
-function Repository(model, parent) {
+function Repository(parent) {
   const dom = {};
 
   // Set up fixed parts
@@ -27,7 +28,7 @@ function Repository(model, parent) {
   dom.updated = addRow(tbody, 'Updated');
 
   // Update elements
-  model.subscribe((state) => {
+  subscribeToModel((state) => {
     const { repos, selectedIndex, error, loading } = state;
 
     if (error) {

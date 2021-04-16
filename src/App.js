@@ -1,20 +1,28 @@
-import Model from './model/Model.js';
+import { subscribeToModel } from './model/model.js';
+import { fetchRepos, fetchContributors } from './model/fetchers.js';
 import Selector from './components/Selector.js';
-import Main from './components/Main.js';
 import Errors from './components/Errors.js';
+import Repository from './components/Repository.js';
+import Contributors from './components/Contributors.js';
+import createAndAppend from './lib/createAndAppend.js';
 
 async function AppComponent() {
-  const model = Model();
   const root = document.getElementById('root');
 
-  Selector(model, root);
-  Errors(model, root);
-  Main(model, root);
+  Selector(root);
+  Errors(root);
 
-  model.subscribe((state) => console.log(state));
+  const main = createAndAppend('main', root, {
+    class: 'main-container',
+  });
 
-  await model.fetchRepos();
-  await model.fetchContributors(0);
+  Repository(main);
+  Contributors(main);
+
+  subscribeToModel((state) => console.log(state));
+
+  await fetchRepos();
+  await fetchContributors(0);
 }
 
 window.addEventListener('load', AppComponent);
