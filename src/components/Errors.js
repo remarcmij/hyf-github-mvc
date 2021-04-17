@@ -1,11 +1,11 @@
-import clearElement from '../lib/clearElement.js';
-import { subscribeToStore } from '../store/store.js';
+import clearComponent from '../lib/clearComponent.js';
+import store from '../store/store.js';
 import createComponent from '../lib/createComponent.js';
 
 function Errors(parent) {
   const container = createComponent(parent);
 
-  subscribeToStore((state) => {
+  store.subscribe((state) => {
     const { error } = state;
 
     if (error) {
@@ -14,7 +14,7 @@ function Errors(parent) {
         class: 'alert alert-error',
       });
     } else {
-      clearElement(container);
+      clearComponent(container);
     }
   });
 }

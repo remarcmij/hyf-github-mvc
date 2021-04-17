@@ -1,5 +1,5 @@
-import clearElement from '../lib/clearElement.js';
-import { subscribeToStore } from '../store/store.js';
+import clearComponent from '../lib/clearComponent.js';
+import store from '../store/store.js';
 import createComponent from '../lib/createComponent.js';
 import Contributor from './Contributor.js';
 
@@ -14,7 +14,7 @@ function Contributors(parent) {
     class: 'contributor-list',
   });
 
-  subscribeToStore((state) => {
+  store.subscribe((state) => {
     const { contributors, loading, error } = state;
 
     if (error) {
@@ -27,7 +27,7 @@ function Contributors(parent) {
       return;
     }
 
-    clearElement(ul);
+    clearComponent(ul);
 
     contributors.forEach((contributor) => {
       Contributor(ul, { contributor });

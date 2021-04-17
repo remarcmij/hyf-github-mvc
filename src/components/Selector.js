@@ -1,5 +1,5 @@
 import { fetchContributors } from '../store/actions.js';
-import { subscribeToStore } from '../store/store.js';
+import store from '../store/store.js';
 import createComponent from '../lib/createComponent.js';
 
 function Selector(parent) {
@@ -13,7 +13,7 @@ function Selector(parent) {
     fetchContributors(selectElem.value)
   );
 
-  const unsubscribe = subscribeToStore((state) => {
+  const unsubscribe = store.subscribe((state) => {
     const { repos, loading, error } = state;
     if (!repos || loading || error) {
       return;

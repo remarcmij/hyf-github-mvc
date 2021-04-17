@@ -1,4 +1,4 @@
-import { subscribeToStore } from './store/store.js';
+import store from './store/store.js';
 import { fetchRepos, fetchContributors } from './store/actions.js';
 import Header from './components/Header.js';
 import MainContainer from './components/MainContainer.js';
@@ -11,7 +11,7 @@ function App(parent) {
   fetchRepos().then(() => fetchContributors(0));
 
   // show state changes in the console
-  subscribeToStore((state) => console.log(state));
+  store.subscribe((state) => console.log(state));
 }
 
 window.addEventListener('load', () => {

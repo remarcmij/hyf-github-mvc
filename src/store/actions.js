@@ -1,4 +1,4 @@
-import { getState, updateState } from './store.js';
+import store from './store.js';
 import fetchJSON from '../lib/fetchJSON.js';
 
 const HYF_REPOS_URL =
@@ -6,26 +6,27 @@ const HYF_REPOS_URL =
 
 export async function fetchRepos() {
   try {
-    updateState({ loading: true, error: null });
+    store.updateState({ loading: true, error: null });
     const repos = await fetchJSON(HYF_REPOS_URL);
     repos.sort((a, b) => a.name.localeCompare(b.name));
-    updateState({ repos, loading: false });
+    store.updateState({ repos, loading: false });
   } catch (error) {
-    updateState({ loading: false, error });
+    store.updateState({ loading: false, error });
   }
 }
 
 export async function fetchContributors(selectedIndex) {
   try {
-    updateState({ loading: true, error: null });
-    const url = getState().repos[selectedIndex].contributors_url;
+    store.updateState({ loading: true, error: null });
+    const { repos } = store.getState();
+    const url = repos[selectedIndex].contributors_url;
     const contributors = await fetchJSON(url);
-    updateState({
+    store.updateState({
       contributors,
       loading: false,
       selectedIndex,
     });
   } catch (error) {
-    updateState({ loading: false, error });
+    store.getStateupdateState({ loading: false, error });
   }
 }

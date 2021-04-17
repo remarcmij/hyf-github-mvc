@@ -1,4 +1,4 @@
-import { subscribeToStore } from '../store/store.js';
+import store from '../store/store.js';
 import TableRow from './TableRow.js';
 import createComponent from '../lib/createComponent.js';
 
@@ -22,7 +22,7 @@ function Repository(parent) {
   const updatedElem = TableRow(tbody, { label: 'Updated' });
 
   // Update elements
-  subscribeToStore((state) => {
+  store.subscribe((state) => {
     const { repos, selectedIndex, error, loading } = state;
 
     if (error) {
