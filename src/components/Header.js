@@ -1,9 +1,9 @@
 import Selector from './Selector.js';
-import Component from '../lib/Component.js';
+import createComponent from '../lib/createComponent.js';
 
 function Header(parent) {
-  const header = Component(parent, { tag: 'header', class: 'header' });
-  Component(header, { text: 'HackYourFuture' });
+  const header = createComponent(parent, { tag: 'header', class: 'header' });
+  createComponent(header, { text: 'HackYourFuture' });
   Selector(header);
 }
 

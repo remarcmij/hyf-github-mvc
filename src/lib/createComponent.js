@@ -1,4 +1,4 @@
-function Component(parent, props = {}) {
+function createComponent(parent, props = {}) {
   const { tag = 'div', ...rest } = props;
   const elem = document.createElement(tag);
   parent.appendChild(elem);
@@ -12,4 +12,4 @@ function Component(parent, props = {}) {
   return elem;
 }
 
-export default Component;
+export default createComponent;

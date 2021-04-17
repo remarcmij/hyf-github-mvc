@@ -1,15 +1,18 @@
 import clearElement from '../lib/clearElement.js';
 import { subscribeToStore } from '../store/store.js';
-import Component from '../lib/Component.js';
+import createComponent from '../lib/createComponent.js';
 import Contributor from './Contributor.js';
 
 function Contributors(parent) {
-  const container = Component(parent, {
+  const container = createComponent(parent, {
     tag: 'section',
     class: 'contributors-container whiteframe',
   });
 
-  const ul = Component(container, { tag: 'ul', class: 'contributor-list' });
+  const ul = createComponent(container, {
+    tag: 'ul',
+    class: 'contributor-list',
+  });
 
   subscribeToStore((state) => {
     const { contributors, loading, error } = state;

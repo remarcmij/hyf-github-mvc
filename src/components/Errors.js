@@ -1,15 +1,15 @@
 import clearElement from '../lib/clearElement.js';
 import { subscribeToStore } from '../store/store.js';
-import Component from '../lib/Component.js';
+import createComponent from '../lib/createComponent.js';
 
 function Errors(parent) {
-  const container = Component(parent);
+  const container = createComponent(parent);
 
   subscribeToStore((state) => {
     const { error } = state;
 
     if (error) {
-      Component(container, {
+      createComponent(container, {
         text: error.message,
         class: 'alert alert-error',
       });

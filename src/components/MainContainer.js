@@ -1,10 +1,13 @@
 import Errors from './Errors.js';
 import Repository from './Repository.js';
 import Contributors from './Contributors.js';
-import Component from '../lib/Component.js';
+import createComponent from '../lib/createComponent.js';
 
 function MainContainer(parent) {
-  const main = Component(parent, { tag: 'main', class: 'main-container' });
+  const main = createComponent(parent, {
+    tag: 'main',
+    class: 'main-container',
+  });
 
   Errors(parent);
   Repository(main);

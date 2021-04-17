@@ -1,15 +1,15 @@
-import Component from '../lib/Component.js';
+import createComponent from '../lib/createComponent.js';
 
 function Contributor(parent, props) {
   const { contributor } = props;
-  const li = Component(parent, { tag: 'li' });
-  const a = Component(li, {
+  const li = createComponent(parent, { tag: 'li' });
+  const a = createComponent(li, {
     tag: 'a',
     href: contributor.html_url,
     class: 'contributor-item',
     target: '_blank',
   });
-  Component(a, {
+  createComponent(a, {
     tag: 'img',
     src: contributor.avatar_url,
     alt: `avatar for ${contributor.login}`,
@@ -17,11 +17,11 @@ function Contributor(parent, props) {
     height: 48,
     loading: 'lazy', // try the new lazy loading from Chrome 76
   });
-  const div = Component(a, {
+  const div = createComponent(a, {
     class: 'contributor-data',
   });
-  Component(div, { text: contributor.login });
-  Component(div, {
+  createComponent(div, { text: contributor.login });
+  createComponent(div, {
     text: contributor.contributions,
     class: 'contributor-badge',
   });
