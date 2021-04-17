@@ -13,7 +13,7 @@ function Selector(parent) {
     fetchContributors(selectElem.value)
   );
 
-  subscribeToStore((state) => {
+  const unsubscribe = subscribeToStore((state) => {
     const { repos, loading, error } = state;
     if (!repos || loading || error) {
       return;
@@ -26,6 +26,9 @@ function Selector(parent) {
         value: index,
       })
     );
+
+    // unsubscribe for further update
+    unsubscribe();
   });
 }
 

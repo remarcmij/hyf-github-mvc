@@ -6,7 +6,7 @@ let state = {
   error: null,
 };
 
-const listeners = [];
+const listeners = new Set();
 
 function notify(state) {
   listeners.forEach((listener) => listener(state));
@@ -22,5 +22,6 @@ export function updateState(updates) {
 }
 
 export function subscribeToStore(listener) {
-  listeners.push(listener);
+  listeners.add(listener);
+  return () => listeners.delete(listener);
 }
