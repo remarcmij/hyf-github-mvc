@@ -4,12 +4,10 @@ import Selector from './components/Selector.js';
 import Errors from './components/Errors.js';
 import Main from './components/Main.js';
 
-async function AppComponent() {
-  const root = document.getElementById('root');
-
-  Selector(root);
-  Errors(root);
-  Main(root);
+async function App(parent) {
+  Selector(parent);
+  Errors(parent);
+  Main(parent);
 
   subscribeToStore((state) => console.log(state));
 
@@ -17,4 +15,7 @@ async function AppComponent() {
   await fetchContributors(0);
 }
 
-window.addEventListener('load', AppComponent);
+window.addEventListener('load', () => {
+  const root = document.getElementById('root');
+  App(root);
+});
