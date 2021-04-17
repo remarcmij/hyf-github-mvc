@@ -1,12 +1,14 @@
 import { subscribeToStore } from './store/store.js';
+import { fetchRepos, fetchContributors } from './store/actions.js';
 import Header from './components/Header.js';
-// import Errors from './components/Errors.js';
 import MainContainer from './components/MainContainer.js';
 
 function App(parent) {
   Header(parent);
-  // Errors(parent);
   MainContainer(parent);
+
+  // Initial fetches
+  fetchRepos().then(() => fetchContributors(0));
 
   // show state changes in the console
   subscribeToStore((state) => console.log(state));
