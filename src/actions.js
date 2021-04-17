@@ -1,5 +1,5 @@
 import store from './store.js';
-import fetchJSON from '../lib/fetchJSON.js';
+import fetchJSON from './lib/fetchJSON.js';
 
 const HYF_REPOS_URL =
   'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
@@ -27,6 +27,6 @@ export async function fetchContributors(selectedIndex) {
       selectedIndex,
     });
   } catch (error) {
-    store.getStateupdateState({ loading: false, error });
+    store.updateState({ loading: false, error });
   }
 }

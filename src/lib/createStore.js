@@ -1,11 +1,5 @@
-function Store() {
-  let state = {
-    repos: null,
-    contributors: null,
-    selectedIndex: 0,
-    loading: false,
-    error: null,
-  };
+function createStore(initialState = {}) {
+  let state = { ...initialState };
 
   const listeners = new Set();
 
@@ -30,4 +24,4 @@ function Store() {
   return { getState, updateState, subscribe };
 }
 
-export default Store();
+export default createStore;

@@ -1,5 +1,5 @@
-import store from './store/store.js';
-import { fetchRepos, fetchContributors } from './store/actions.js';
+import store from './store.js';
+import { fetchRepos, fetchContributors } from './actions.js';
 import Header from './components/Header.js';
 import MainContainer from './components/MainContainer.js';
 

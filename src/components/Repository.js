@@ -1,4 +1,4 @@
-import store from '../store/store.js';
+import store from '../store.js';
 import TableRow from './TableRow.js';
 import createComponent from '../lib/createComponent.js';
 

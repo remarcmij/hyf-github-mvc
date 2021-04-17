@@ -1,5 +1,5 @@
 import clearComponent from '../lib/clearComponent.js';
-import store from '../store/store.js';
+import store from '../store.js';
 import createComponent from '../lib/createComponent.js';
 import Contributor from './Contributor.js';
 

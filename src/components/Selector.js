@@ -1,5 +1,5 @@
-import { fetchContributors } from '../store/actions.js';
-import store from '../store/store.js';
+import { fetchContributors } from '../actions.js';
+import store from '../store.js';
 import createComponent from '../lib/createComponent.js';
 
 function Selector(parent) {
