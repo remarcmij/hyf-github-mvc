@@ -15,8 +15,9 @@ function notify(state) {
 export function getState() {
   return state;
 }
-export function setState(newState) {
-  state = newState;
+
+export function updateState(updates) {
+  state = { ...state, ...updates };
   notify(state);
 }
 
