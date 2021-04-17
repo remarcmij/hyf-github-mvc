@@ -1,29 +1,25 @@
-import createAndAppend from '../lib/createAndAppend.js';
 import { subscribeToStore } from '../store/store.js';
-
-function addRow(tbody, label) {
-  const row = createAndAppend('tr', tbody);
-  createAndAppend('th', row, { text: `${label}:`, class: 'label' });
-  return createAndAppend('td', row);
-}
+import TableRow from './TableRow.js';
+import Component from '../lib/Component.js';
 
 function Repository(parent) {
   // Set up fixed parts
-  const container = createAndAppend('section', parent, {
+  const container = Component(parent, {
+    tag: 'section',
     class: 'repo-container whiteframe hide',
   });
 
-  const cardContainer = createAndAppend('div', container, {
+  const cardContainer = Component(container, {
     class: 'card-container',
   });
 
-  const table = createAndAppend('table', cardContainer);
-  const tbody = createAndAppend('tbody', table);
+  const table = Component(cardContainer, { tag: 'table' });
+  const tbody = Component(table, { tag: 'tbody' });
 
-  const repositoryElem = addRow(tbody, 'Repository');
-  const descriptionElem = addRow(tbody, 'Description');
-  const forksElem = addRow(tbody, 'Forks');
-  const updatedElem = addRow(tbody, 'Updated');
+  const repositoryElem = TableRow(tbody, { label: 'Repository' });
+  const descriptionElem = TableRow(tbody, { label: 'Description' });
+  const forksElem = TableRow(tbody, { label: 'Forks' });
+  const updatedElem = TableRow(tbody, { label: 'Updated' });
 
   // Update elements
   subscribeToStore((state) => {

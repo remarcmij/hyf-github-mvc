@@ -1,16 +1,15 @@
-import createAndAppend from '../lib/createAndAppend.js';
 import clearElement from '../lib/clearElement.js';
 import { subscribeToStore } from '../store/store.js';
+import Component from '../lib/Component.js';
 import Contributor from './Contributor.js';
 
 function Contributors(parent) {
-  const container = createAndAppend('section', parent, {
+  const container = Component(parent, {
+    tag: 'section',
     class: 'contributors-container whiteframe',
   });
 
-  const ul = createAndAppend('ul', container, {
-    class: 'contributor-list',
-  });
+  const ul = Component(container, { tag: 'ul', class: 'contributor-list' });
 
   subscribeToStore((state) => {
     const { contributors, loading, error } = state;
@@ -28,7 +27,7 @@ function Contributors(parent) {
     clearElement(ul);
 
     contributors.forEach((contributor) => {
-      Contributor(ul, contributor);
+      Contributor(ul, { contributor });
     });
   });
 }

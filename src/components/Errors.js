@@ -1,15 +1,15 @@
-import createAndAppend from '../lib/createAndAppend.js';
 import clearElement from '../lib/clearElement.js';
 import { subscribeToStore } from '../store/store.js';
+import Component from '../lib/Component.js';
 
 function Errors(parent) {
-  const container = createAndAppend('div', parent);
+  const container = Component(parent);
 
   subscribeToStore((state) => {
     const { error } = state;
 
     if (error) {
-      createAndAppend('div', container, {
+      Component(container, {
         text: error.message,
         class: 'alert alert-error',
       });

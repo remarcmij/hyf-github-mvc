@@ -1,12 +1,12 @@
 import { subscribeToStore } from './store/store.js';
-import Selector from './components/Selector.js';
-import Errors from './components/Errors.js';
-import Main from './components/Main.js';
+import Header from './components/Header.js';
+// import Errors from './components/Errors.js';
+import MainContainer from './components/MainContainer.js';
 
 function App(parent) {
-  Selector(parent);
-  Errors(parent);
-  Main(parent);
+  Header(parent);
+  // Errors(parent);
+  MainContainer(parent);
 
   // show state changes in the console
   subscribeToStore((state) => console.log(state));
