@@ -8,16 +8,11 @@
  * @returns {HTMLElement}
  */
 function createComponent(parent, props = {}) {
-  const { tag = 'div', ...rest } = props;
+  const { tag = 'div', text = '', ...rest } = props;
   const elem = document.createElement(tag);
   parent.appendChild(elem);
-  Object.entries(rest).forEach(([key, value]) => {
-    if (key === 'text') {
-      elem.textContent = value;
-    } else {
-      elem.setAttribute(key, value);
-    }
-  });
+  elem.textContent = text;
+  Object.entries(rest).forEach(([key, value]) => elem.setAttribute(key, value));
   return elem;
 }
 
