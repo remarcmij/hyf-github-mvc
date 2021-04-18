@@ -17,6 +17,10 @@ function Repository(parent) {
   const tbody = createComponent(table, { use: 'tbody' });
 
   const repositoryElem = TableRow(tbody, { label: 'Repository' });
+  const repositoryLink = createComponent(repositoryElem, {
+    use: 'a',
+    target: '_blank',
+  });
   const descriptionElem = TableRow(tbody, { label: 'Description' });
   const forksElem = TableRow(tbody, { label: 'Forks' });
   const updatedElem = TableRow(tbody, { label: 'Updated' });
@@ -36,8 +40,8 @@ function Repository(parent) {
     }
 
     const repo = repos[selectedIndex];
-    repositoryElem.href = repo.html_url;
-    repositoryElem.textContent = repo.name;
+    repositoryLink.href = repo.html_url;
+    repositoryLink.textContent = repo.name;
     descriptionElem.textContent = repo.description;
     forksElem.textContent = repo.forks;
     updatedElem.textContent = new Date(repo.updated_at).toLocaleString();
