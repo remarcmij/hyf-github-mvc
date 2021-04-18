@@ -5,7 +5,7 @@ import createElement from '../lib/createElement.js';
 function Selector(parent) {
   const selectElem = createElement(parent, {
     use: 'select',
-    class: 'repo-select',
+    class: 'repo-select hide',
     autofocus: 'autofocus',
   });
 
@@ -26,6 +26,8 @@ function Selector(parent) {
         value: index,
       })
     );
+
+    selectElem.classList.remove('hide');
 
     // unsubscribe for further updates
     unsubscribe();
