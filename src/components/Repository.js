@@ -5,7 +5,7 @@ import createComponent from '../lib/createComponent.js';
 function Repository(parent) {
   // Set up fixed parts
   const container = createComponent(parent, {
-    tag: 'section',
+    use: 'section',
     class: 'repo-container whiteframe hide',
   });
 
@@ -13,8 +13,8 @@ function Repository(parent) {
     class: 'card-container',
   });
 
-  const table = createComponent(cardContainer, { tag: 'table' });
-  const tbody = createComponent(table, { tag: 'tbody' });
+  const table = createComponent(cardContainer, { use: 'table' });
+  const tbody = createComponent(table, { use: 'tbody' });
 
   const repositoryElem = TableRow(tbody, { label: 'Repository' });
   const descriptionElem = TableRow(tbody, { label: 'Description' });

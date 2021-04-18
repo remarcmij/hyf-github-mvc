@@ -4,7 +4,7 @@ import createComponent from '../lib/createComponent.js';
 
 function Selector(parent) {
   const selectElem = createComponent(parent, {
-    tag: 'select',
+    use: 'select',
     class: 'repo-select',
     autofocus: 'autofocus',
   });
@@ -21,7 +21,7 @@ function Selector(parent) {
 
     repos.forEach((repo, index) =>
       createComponent(selectElem, {
-        tag: 'option',
+        use: 'option',
         text: repo.name,
         value: index,
       })

@@ -5,12 +5,12 @@ import Contributor from './Contributor.js';
 
 function Contributors(parent) {
   const container = createComponent(parent, {
-    tag: 'section',
+    use: 'section',
     class: 'contributors-container whiteframe',
   });
 
   const ul = createComponent(container, {
-    tag: 'ul',
+    use: 'ul',
     class: 'contributor-list',
   });
 

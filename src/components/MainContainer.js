@@ -5,7 +5,7 @@ import createComponent from '../lib/createComponent.js';
 
 function MainContainer(parent) {
   const main = createComponent(parent, {
-    tag: 'main',
+    use: 'main',
     class: 'main-container',
   });
 

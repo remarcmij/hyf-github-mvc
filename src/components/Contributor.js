@@ -2,15 +2,15 @@ import createComponent from '../lib/createComponent.js';
 
 function Contributor(parent, props) {
   const { contributor } = props;
-  const li = createComponent(parent, { tag: 'li' });
+  const li = createComponent(parent, { use: 'li' });
   const a = createComponent(li, {
-    tag: 'a',
+    use: 'a',
     href: contributor.html_url,
     class: 'contributor-item',
     target: '_blank',
   });
   createComponent(a, {
-    tag: 'img',
+    use: 'img',
     src: contributor.avatar_url,
     alt: `avatar for ${contributor.login}`,
     class: 'contributor-avatar',
