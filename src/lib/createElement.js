@@ -7,7 +7,7 @@
  * @param {Object} props Properties for the new HTML element.
  * @returns {HTMLElement}
  */
-function createComponent(parent, props = {}) {
+function createElement(parent, props = {}) {
   const { use = 'div', text = '', ...rest } = props;
   const elem = document.createElement(use);
   parent.appendChild(elem);
@@ -16,4 +16,4 @@ function createComponent(parent, props = {}) {
   return elem;
 }
 
-export default createComponent;
+export default createElement;

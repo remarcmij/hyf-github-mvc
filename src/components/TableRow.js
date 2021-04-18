@@ -1,10 +1,10 @@
-import createComponent from '../lib/createComponent.js';
+import createElement from '../lib/createElement.js';
 
 function TableRow(parent, props) {
   const { label } = props;
-  const row = createComponent(parent, { use: 'tr' });
-  createComponent(row, { use: 'th', text: `${label}:`, class: 'label' });
-  return createComponent(row, { use: 'td' });
+  const row = createElement(parent, { use: 'tr' });
+  createElement(row, { use: 'th', text: `${label}:`, class: 'label' });
+  return createElement(row, { use: 'td' });
 }
 
 export default TableRow;

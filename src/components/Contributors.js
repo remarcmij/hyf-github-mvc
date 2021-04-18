@@ -1,15 +1,15 @@
-import clearComponent from '../lib/clearComponent.js';
+import clearElement from '../lib/clearElement.js';
 import store from '../store.js';
-import createComponent from '../lib/createComponent.js';
+import createElement from '../lib/createElement.js';
 import Contributor from './Contributor.js';
 
 function Contributors(parent) {
-  const container = createComponent(parent, {
+  const container = createElement(parent, {
     use: 'section',
     class: 'contributors-container whiteframe',
   });
 
-  const ul = createComponent(container, {
+  const ul = createElement(container, {
     use: 'ul',
     class: 'contributor-list',
   });
@@ -27,7 +27,7 @@ function Contributors(parent) {
       return;
     }
 
-    clearComponent(ul);
+    clearElement(ul);
 
     contributors.forEach((contributor) => {
       Contributor(ul, { contributor });

@@ -1,9 +1,9 @@
 import { fetchContributors } from '../actions.js';
 import store from '../store.js';
-import createComponent from '../lib/createComponent.js';
+import createElement from '../lib/createElement.js';
 
 function Selector(parent) {
-  const selectElem = createComponent(parent, {
+  const selectElem = createElement(parent, {
     use: 'select',
     class: 'repo-select',
     autofocus: 'autofocus',
@@ -20,7 +20,7 @@ function Selector(parent) {
     }
 
     repos.forEach((repo, index) =>
-      createComponent(selectElem, {
+      createElement(selectElem, {
         use: 'option',
         text: repo.name,
         value: index,

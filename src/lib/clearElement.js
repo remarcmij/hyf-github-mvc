@@ -1,7 +1,7 @@
-function clearComponent(element) {
+function clearElement(element) {
   while (element.firstChild) {
     element.firstChild.remove();
   }
 }
 
-export default clearComponent;
+export default clearElement;

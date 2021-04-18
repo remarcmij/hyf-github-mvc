@@ -1,23 +1,23 @@
 import store from '../store.js';
 import TableRow from './TableRow.js';
-import createComponent from '../lib/createComponent.js';
+import createElement from '../lib/createElement.js';
 
 function Repository(parent) {
   // Set up fixed parts
-  const container = createComponent(parent, {
+  const container = createElement(parent, {
     use: 'section',
     class: 'repo-container whiteframe hide',
   });
 
-  const cardContainer = createComponent(container, {
+  const cardContainer = createElement(container, {
     class: 'card-container',
   });
 
-  const table = createComponent(cardContainer, { use: 'table' });
-  const tbody = createComponent(table, { use: 'tbody' });
+  const table = createElement(cardContainer, { use: 'table' });
+  const tbody = createElement(table, { use: 'tbody' });
 
   const repositoryElem = TableRow(tbody, { label: 'Repository' });
-  const repositoryLink = createComponent(repositoryElem, {
+  const repositoryLink = createElement(repositoryElem, {
     use: 'a',
     target: '_blank',
   });
