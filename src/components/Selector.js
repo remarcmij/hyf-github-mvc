@@ -27,7 +27,7 @@ function Selector(parent) {
       })
     );
 
-    // unsubscribe for further update
+    // unsubscribe for further updates
     unsubscribe();
   });
 }
