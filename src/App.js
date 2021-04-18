@@ -14,7 +14,4 @@ function App(parent) {
   store.subscribe((state) => console.log(state));
 }
 
-window.addEventListener('load', () => {
-  const root = document.getElementById('root');
-  App(root);
-});
+export default App;
